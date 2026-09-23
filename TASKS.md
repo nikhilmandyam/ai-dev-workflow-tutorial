@@ -12,16 +12,6 @@ Before any milestone moves to Done:
 
 ## To Do
 
-### TASK-3: KPI cards
-
-Display Total Sales and Total Orders prominently using the CSV data.
-
-- [ ] Total Sales equals the sum of `total_amount`, and Total Orders equals the transaction count.
-- [ ] Currency uses a dollar sign and thousands separators, and order counts use thousands separators where appropriate.
-- [ ] Sample-data KPIs show 482 orders and approximately $116,500 in sales, with exact values verified against the CSV.
-
-Commit:
-
 ### TASK-4: Sales trend chart
 
 Show sales over time in an interactive line chart.
@@ -63,6 +53,22 @@ Deploy the completed dashboard for stakeholder review through a public URL.
 Commit:
 
 ## In Progress
+
+### TASK-3: KPI cards
+
+Display Total Sales and Total Orders prominently using the CSV data.
+
+- [x] Total Sales equals the sum of `total_amount`, and Total Orders equals the transaction count.
+- [x] Currency uses a dollar sign and thousands separators, and order counts use thousands separators where appropriate.
+- [x] Sample-data KPIs show 482 orders and approximately $116,500 in sales, with exact values verified against the CSV.
+
+Verification: 32 pytest tests pass. Independent CSV verification totals
+$116,500.21 across 482 transactions; AppTest confirms Total Sales `$116,500`
+and Total Orders `482`, with no app exceptions, errors, or warnings.
+Streamlit starts locally at http://127.0.0.1:8503. Browser inspection is
+unavailable in this session; visual confirmation remains outstanding.
+
+Commit:
 
 ## Done
 

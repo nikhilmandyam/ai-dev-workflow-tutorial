@@ -75,3 +75,7 @@ def validate_sales(frame: pd.DataFrame) -> pd.DataFrame:
     frame["unit_price_cents"] = pd.Series(prices, dtype=object)
     frame["total_cents"] = pd.Series(totals, dtype=object)
     return frame
+
+
+def calculate_kpis(sales: pd.DataFrame) -> tuple[int, int]:
+    return sum(sales["total_cents"]), len(sales)

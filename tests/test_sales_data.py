@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from sales_data import load_sales
+from sales_data import calculate_kpis, load_sales
 
 FIELDS = ["date", "order_id", "product", "category", "region",
           "quantity", "unit_price", "total_amount"]
@@ -89,3 +89,10 @@ def test_large_money_preserves_every_cent(tmp_path):
         row(quantity='1', unit_price=amount, total_amount=amount),
     ]))
     assert frame.loc[0, 'total_cents'] == 123456789012345678901234567891
+
+
+def test_kpis_preserve_cents(tmp_path):
+    frame = load_sales(write_csv(tmp_path, [
+        row(), row(order_id="B", quantity="1", unit_price="0.10", total_amount="0.10")
+    ]))
+    assert calculate_kpis(frame) == (30, 2)

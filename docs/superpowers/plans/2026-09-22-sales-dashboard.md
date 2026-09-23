@@ -337,7 +337,7 @@ st.caption(f"Sales period: {sales['date'].min():%b %d, %Y} – {sales['date'].ma
 
 **Interfaces:** `calculate_kpis(sales: pd.DataFrame) -> tuple[int, int]` returns `(total_cents, transaction_count)`.
 
-- [ ] Add and run this failing test with `python -m pytest tests/test_sales_data.py -k kpis -q`:
+- [x] Add and run this failing test with `python -m pytest tests/test_sales_data.py -k kpis -q`:
 
 ```python
 from sales_data import calculate_kpis
@@ -349,14 +349,14 @@ def test_kpis_preserve_cents(tmp_path):
     assert calculate_kpis(frame) == (30, 2)
 ```
 
-- [ ] Implement the calculation:
+- [x] Implement the calculation:
 
 ```python
 def calculate_kpis(sales: pd.DataFrame) -> tuple[int, int]:
     return sum(sales["total_cents"]), len(sales)
 ```
 
-- [ ] Import `calculate_kpis` into `app.py` and fill the existing KPI columns. Use Decimal for the display conversion, leaving the stored total unchanged:
+- [x] Import `calculate_kpis` into `app.py` and fill the existing KPI columns. Use Decimal for the display conversion, leaving the stored total unchanged:
 
 ```python
 from decimal import Decimal
