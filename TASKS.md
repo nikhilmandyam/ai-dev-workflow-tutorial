@@ -34,23 +34,27 @@ Commit:
 
 ## In Progress
 
+## Done
+
 ### TASK-5: Category and region breakdowns
 
 Show interactive bar charts comparing sales by product category and geographic region.
 
-- [ ] The category chart includes all five categories and sorts sales from highest to lowest.
-- [ ] The region chart includes North, South, East, and West and sorts sales from highest to lowest.
-- [ ] Both charts have clear labels, tooltips with exact values, and totals matching CSV aggregations.
+- [x] The category chart includes all five categories and sorts sales from highest to lowest.
+- [x] The region chart includes North, South, East, and West and sorts sales from highest to lowest.
+- [x] Both charts have clear labels, tooltips with exact values, and totals matching CSV aggregations.
 
 Verification: 35 pytest tests pass, including new labels and alphabetical ties.
 Independent CSV calculations match every category and region total; both sum to
 11,650,021 cents ($116,500.21). AppTest confirms three charts, descending bar
 ordering, labeled axes, and cent-precision hover templates, with no app exceptions,
-errors, or warnings. Visual browser verification remains pending.
+errors, or warnings. The user confirmed five category bars and four region bars,
+largest values at the top, a readable side-by-side layout, exact-cent hover
+values, and no visible errors at http://127.0.0.1:8505.
 
-Commit:
+Commit: bba947d
 
-## Done
+Notes: clean
 
 ### TASK-4: Sales trend chart
 
