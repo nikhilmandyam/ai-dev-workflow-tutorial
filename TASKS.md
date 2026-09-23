@@ -14,24 +14,31 @@ Before any milestone moves to Done:
 
 ## In Progress
 
+## Done
+
 ### TASK-7: Streamlit Community Cloud deployment
 
 Deploy the completed dashboard for stakeholder review through a public URL.
 
+Live dashboard: [ShopSmart Sales Dashboard](https://ai-dev-workflow-tutorial-e6wnb7ajwv9rrs3uaufzu8.streamlit.app)
+
 - [x] The app, dependencies, and CSV are configured for successful deployment to Streamlit Community Cloud.
-- [ ] A public, shareable URL is documented and opens the working dashboard without errors.
-- [ ] Deployed KPIs and all three charts match the locally verified dashboard.
+- [x] A public, shareable URL is documented and opens the working dashboard without errors.
+- [x] Deployed KPIs and all three charts match the locally verified dashboard.
 
 Readiness: Step 8 prepared on Python 3.14.7; all four deployment inputs are
 tracked, dependency installation/check passes, and 39 tests pass. Deployment
 instructions are in `README.md`; evidence and review status are in
 [the verification document](docs/sales-dashboard-verification.md#task-7-deployment-readiness--plan-step-8).
-Final review and merge remain user-owned, followed by deployment from `main`.
-No public URL or deployed parity is claimed. TASK-7 remains In Progress.
+Final review found no actionable defects; the feature was merged into `main`
+with merge commit `6fb4828` and pushed to GitHub. The user reported the live
+deployment and accepted TASK-7 on September 23, 2026, explicitly requesting all
+criteria checked and movement to Done. Deployment acceptance is user-reported;
+the agent has not independently verified the cloud dashboard.
 
 Commit:
 
-## Done
+Notes: clean
 
 ### TASK-6: Testing and refinement
 

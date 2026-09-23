@@ -1,5 +1,7 @@
 # AI-Assisted Development Workflow Tutorial
 
+**Live dashboard:** [ShopSmart Sales Dashboard](https://ai-dev-workflow-tutorial-e6wnb7ajwv9rrs3uaufzu8.streamlit.app)
+
 This tutorial teaches you a professional development workflow by having you build and deploy a real project: an e-commerce sales dashboard.
 
 You'll work through it in two parts:
@@ -176,5 +178,5 @@ merge it into the GitHub repository's `main` branch before deploying.
    remaining TASK-7 criteria in `TASKS.md` only after they pass. Commit with
    `TASK-7: Record verified public deployment` through the normal review workflow.
 
-**This repository's public deployment URL:** Pending user deployment after merge.
+**This repository's public deployment URL:** [ShopSmart Sales Dashboard](https://ai-dev-workflow-tutorial-e6wnb7ajwv9rrs3uaufzu8.streamlit.app)
 The finished-example URL earlier in this tutorial is not this deployment.
