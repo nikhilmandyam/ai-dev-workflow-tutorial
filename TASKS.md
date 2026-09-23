@@ -12,16 +12,6 @@ Before any milestone moves to Done:
 
 ## To Do
 
-### TASK-2: Data loading and basic structure
-
-Load the sales CSV and establish the dashboard layout and data-processing structure.
-
-- [ ] `data/sales-data.csv` loads all 482 transactions with the required columns and appropriate date, numeric, and categorical types.
-- [ ] Data loading and aggregation are organized into readable, reusable functions.
-- [ ] The layout provides KPI cards, a sales trend area, and side-by-side category and region chart areas.
-
-Commit:
-
 ### TASK-3: KPI cards
 
 Display Total Sales and Total Orders prominently using the CSV data.
@@ -73,6 +63,16 @@ Deploy the completed dashboard for stakeholder review through a public URL.
 Commit:
 
 ## In Progress
+
+### TASK-2: Data loading and basic structure
+
+Load the sales CSV and establish the dashboard layout and data-processing structure.
+
+- [ ] `data/sales-data.csv` loads all 482 transactions with the required columns and appropriate date, numeric, and categorical types.
+- [ ] Data loading and aggregation are organized into readable, reusable functions.
+- [ ] The layout provides KPI cards, a sales trend area, and side-by-side category and region chart areas.
+
+Commit:
 
 ## Done
 
