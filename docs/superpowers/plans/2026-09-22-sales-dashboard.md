@@ -424,7 +424,7 @@ st.plotly_chart(figure, width="stretch")
 
 **Interfaces:** `category_sales(sales: pd.DataFrame) -> pd.DataFrame` returns `category, total_cents`; `region_sales(sales: pd.DataFrame) -> pd.DataFrame` returns `region, total_cents`. Both sort sales descending and labels ascending for ties.
 
-- [ ] Add and run the failing breakdown tests:
+- [x] Add and run the failing breakdown tests:
 
 ```python
 from sales_data import category_sales, region_sales
@@ -446,7 +446,7 @@ def test_breakdowns_sum_sort_and_include_new_labels(tmp_path, function, column):
 
 Run `python -m pytest tests/test_sales_data.py -k breakdowns -q`; expect failure before implementing the functions.
 
-- [ ] Implement one small shared aggregation helper and two explicit public functions:
+- [x] Implement one small shared aggregation helper and two explicit public functions:
 
 ```python
 def _sales_by(sales: pd.DataFrame, column: str) -> pd.DataFrame:
@@ -461,7 +461,7 @@ def region_sales(sales: pd.DataFrame) -> pd.DataFrame:
     return _sales_by(sales, "region")
 ```
 
-- [ ] Import both functions in `app.py` and replace the two empty breakdown areas with this rendering loop. Keep it in `app.py`; no separate chart module:
+- [x] Import both functions in `app.py` and replace the two empty breakdown areas with this rendering loop. Keep it in `app.py`; no separate chart module:
 
 ```python
 for container, data, column, title in [

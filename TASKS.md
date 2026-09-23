@@ -12,16 +12,6 @@ Before any milestone moves to Done:
 
 ## To Do
 
-### TASK-5: Category and region breakdowns
-
-Show interactive bar charts comparing sales by product category and geographic region.
-
-- [ ] The category chart includes all five categories and sorts sales from highest to lowest.
-- [ ] The region chart includes North, South, East, and West and sorts sales from highest to lowest.
-- [ ] Both charts have clear labels, tooltips with exact values, and totals matching CSV aggregations.
-
-Commit:
-
 ### TASK-6: Testing and refinement
 
 Verify dashboard accuracy, performance, browser compatibility, and presentation quality.
@@ -43,6 +33,22 @@ Deploy the completed dashboard for stakeholder review through a public URL.
 Commit:
 
 ## In Progress
+
+### TASK-5: Category and region breakdowns
+
+Show interactive bar charts comparing sales by product category and geographic region.
+
+- [ ] The category chart includes all five categories and sorts sales from highest to lowest.
+- [ ] The region chart includes North, South, East, and West and sorts sales from highest to lowest.
+- [ ] Both charts have clear labels, tooltips with exact values, and totals matching CSV aggregations.
+
+Verification: 35 pytest tests pass, including new labels and alphabetical ties.
+Independent CSV calculations match every category and region total; both sum to
+11,650,021 cents ($116,500.21). AppTest confirms three charts, descending bar
+ordering, labeled axes, and cent-precision hover templates, with no app exceptions,
+errors, or warnings. Visual browser verification remains pending.
+
+Commit:
 
 ## Done
 

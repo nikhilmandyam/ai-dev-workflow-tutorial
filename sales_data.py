@@ -89,3 +89,17 @@ def monthly_sales(sales: pd.DataFrame) -> pd.DataFrame:
     totals = totals.reindex(complete_range, fill_value=0)
     return pd.DataFrame({"month": complete_range.to_timestamp(),
                          "total_cents": totals.tolist()})
+
+
+def _sales_by(sales: pd.DataFrame, column: str) -> pd.DataFrame:
+    return (sales.groupby(column, as_index=False)["total_cents"].sum()
+            .sort_values(["total_cents", column], ascending=[False, True])
+            .reset_index(drop=True))
+
+
+def category_sales(sales: pd.DataFrame) -> pd.DataFrame:
+    return _sales_by(sales, "category")
+
+
+def region_sales(sales: pd.DataFrame) -> pd.DataFrame:
+    return _sales_by(sales, "region")

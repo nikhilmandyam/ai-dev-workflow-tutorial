@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from sales_data import monthly_sales, calculate_kpis, load_sales
+from sales_data import category_sales, region_sales, monthly_sales, calculate_kpis, load_sales
 
 FIELDS = ["date", "order_id", "product", "category", "region",
           "quantity", "unit_price", "total_amount"]
@@ -107,3 +107,18 @@ def test_monthly_sales_cross_year_gap_and_order(tmp_path):
     result = monthly_sales(frame)
     assert result["month"].dt.strftime("%Y-%m").tolist() == ["2024-12", "2025-01", "2025-02"]
     assert result["total_cents"].tolist() == [40, 0, 20]
+
+
+@pytest.mark.parametrize("function,column", [
+    (category_sales, "category"), (region_sales, "region")
+])
+def test_breakdowns_sum_sort_and_include_new_labels(tmp_path, function, column):
+    frame = load_sales(write_csv(tmp_path, [
+        row(**{column: "Zeta"}),
+        row(order_id="B", **{column: "Alpha"}),
+        row(order_id="C", **{column: "New label"}),
+        row(order_id="D", **{column: "New label"}),
+    ]))
+    result = function(frame)
+    assert result[column].tolist() == ["New label", "Alpha", "Zeta"]
+    assert result["total_cents"].tolist() == [40, 20, 20]
