@@ -64,24 +64,26 @@ Commit:
 
 ## In Progress
 
+## Done
+
 ### TASK-2: Data loading and basic structure
 
 Load the sales CSV and establish the dashboard layout and data-processing structure.
 
 - [x] `data/sales-data.csv` loads all 482 transactions with the required columns and appropriate date, numeric, and categorical types.
 - [x] Data loading and aggregation are organized into readable, reusable functions.
-- [ ] The layout provides KPI cards, a sales trend area, and side-by-side category and region chart areas.
+- [x] The layout provides KPI cards, a sales trend area, and side-by-side category and region chart areas.
 
 Verification: 31 pytest tests pass; all 482 transactions load with parsed dates,
 integer quantities, categorical strings, and exact integer cents. Streamlit starts
 locally, and AppTest confirms the date caption and layout without app errors.
 KPI/chart areas are placeholders for TASK-3–5; aggregation implementations belong
-to those milestones. Browser inspection remains pending because browser control
-is unavailable in this session; TASK-2 stays In Progress until the layout is viewed.
+to those milestones. The user confirmed the correct sales-period caption, Monthly
+Sales section, and side-by-side category and region areas, with no visible errors.
 
-Commit:
+Commit: faf2add
 
-## Done
+Notes: clean
 
 ### TASK-1: Environment setup and project initialization
 
