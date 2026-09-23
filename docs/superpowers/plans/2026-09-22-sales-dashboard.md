@@ -120,7 +120,7 @@ PY
 
 **Interfaces:** `load_sales(path: str | Path) -> pd.DataFrame`. Step 2 returns required columns as strings; Step 3 completes validation and adds normalized numeric/date columns before calculations consume it.
 
-- [ ] Write reusable fixture data and structural tests first:
+- [x] Write reusable fixture data and structural tests first:
 
 ```python
 import csv
@@ -178,8 +178,8 @@ def test_invalid_csv_structure(tmp_path, text):
         load_sales(path)
 ```
 
-- [ ] Run `python -m pytest tests/test_sales_data.py -q`. Confirm failure is due to the absent loader, not a broken test fixture.
-- [ ] Implement structural loading using standard CSV parsing so malformed row lengths and duplicate headers cannot silently shift columns:
+- [x] Run `python -m pytest tests/test_sales_data.py -q`. Confirm failure is due to the absent loader, not a broken test fixture.
+- [x] Implement structural loading using standard CSV parsing so malformed row lengths and duplicate headers cannot silently shift columns:
 
 ```python
 import csv
@@ -212,7 +212,7 @@ def load_sales(path: str | Path) -> pd.DataFrame:
     return pd.DataFrame(rows)
 ```
 
-- [ ] In `app.py`, add the loader call after the title and before any metrics/charts. This boundary remains throughout the plan:
+- [x] In `app.py`, add the loader call after the title and before any metrics/charts. This boundary remains throughout the plan:
 
 ```python
 from pathlib import Path
@@ -241,7 +241,7 @@ with breakdown_columns[1]:
 
 **Interfaces:** `load_sales` now returns parsed dates, integer quantities, original monetary strings, and Python-integer `unit_price_cents` and `total_cents` columns. Internal `validate_sales(frame: pd.DataFrame) -> pd.DataFrame` raises `ValueError` for expected invalid data. Aggregation functions accept only this validated, nonempty frame.
 
-- [ ] Add failing tests for normalized values and invalid fields:
+- [x] Add failing tests for normalized values and invalid fields:
 
 ```python
 def test_exact_cents_and_types(tmp_path):
@@ -275,7 +275,7 @@ def test_zero_price_and_extra_column_are_allowed(tmp_path):
     assert frame.loc[0, "total_cents"] == 0
 ```
 
-- [ ] Run `python -m pytest tests/test_sales_data.py -q` and confirm the new validation tests fail. Then add validation helpers and replace the loader's final return with `return validate_sales(pd.DataFrame(rows))`:
+- [x] Run `python -m pytest tests/test_sales_data.py -q` and confirm the new validation tests fail. Then add validation helpers and replace the loader's final return with `return validate_sales(pd.DataFrame(rows))`:
 
 ```python
 import re
@@ -323,7 +323,7 @@ def validate_sales(frame: pd.DataFrame) -> pd.DataFrame:
     return frame
 ```
 
-- [ ] Add the date-range caption after successful loading and before the layout:
+- [x] Add the date-range caption after successful loading and before the layout:
 
 ```python
 st.caption(f"Sales period: {sales['date'].min():%b %d, %Y} – {sales['date'].max():%b %d, %Y}")

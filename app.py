@@ -1,16 +1,19 @@
+from pathlib import Path
+
 import streamlit as st
+
+from sales_data import load_sales
 
 st.set_page_config(page_title="ShopSmart Sales Dashboard", layout="wide")
 st.title("ShopSmart Sales Dashboard")
-
-from pathlib import Path
-from sales_data import load_sales
 
 try:
     sales = load_sales(Path(__file__).resolve().parent / "data" / "sales-data.csv")
 except ValueError as exc:
     st.error(f"Unable to load sales data: {exc}")
     st.stop()
+
+st.caption(f"Sales period: {sales['date'].min():%b %d, %Y} – {sales['date'].max():%b %d, %Y}")
 
 kpi_columns = st.columns(2)
 st.subheader("Monthly Sales")

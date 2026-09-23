@@ -1,10 +1,14 @@
 import csv
+import re
+from datetime import datetime
+from decimal import Decimal, localcontext
 from pathlib import Path
 
 import pandas as pd
 
 REQUIRED_COLUMNS = ["date", "order_id", "product", "category", "region",
                     "quantity", "unit_price", "total_amount"]
+
 
 def load_sales(path: str | Path) -> pd.DataFrame:
     try:
@@ -25,4 +29,49 @@ def load_sales(path: str | Path) -> pd.DataFrame:
         raise ValueError(f"Cannot read sales CSV: {exc}") from exc
     if not rows:
         raise ValueError("Sales CSV contains no transactions")
-    return pd.DataFrame(rows)
+    return validate_sales(pd.DataFrame(rows))
+
+
+def money_cents(value: str, column: str, row_number: int) -> int:
+    if not re.fullmatch(r"[0-9]+(?:\.[0-9]{1,2})?", value):
+        raise ValueError(f"CSV row {row_number}, {column}: expected nonnegative money with at most two decimals")
+    # Preserve all input digits even beyond Decimal's default precision.
+    with localcontext() as context:
+        context.prec = len(value) + 2
+        return int(Decimal(value) * 100)
+
+
+def validate_sales(frame: pd.DataFrame) -> pd.DataFrame:
+    frame = frame.copy()
+    dates, quantities, prices, totals = [], [], [], []
+    seen = set()
+    for number, values in enumerate(frame.to_dict("records"), start=2):
+        for column in REQUIRED_COLUMNS:
+            if not values[column]:
+                raise ValueError(f"CSV row {number}, {column}: value is required")
+        if values["order_id"] in seen:
+            raise ValueError(f"CSV row {number}, order_id: duplicate identifier")
+        seen.add(values["order_id"])
+        date_text = values["date"]
+        try:
+            if not re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", date_text):
+                raise ValueError("wrong format")
+            date = datetime.strptime(date_text, "%Y-%m-%d")
+        except ValueError as exc:
+            raise ValueError(f"CSV row {number}, date: expected a valid YYYY-MM-DD date") from exc
+        if not re.fullmatch(r"[0-9]+", values["quantity"]) or int(values["quantity"]) <= 0:
+            raise ValueError(f"CSV row {number}, quantity: expected a positive integer")
+        quantity = int(values["quantity"])
+        price = money_cents(values["unit_price"], "unit_price", number)
+        total = money_cents(values["total_amount"], "total_amount", number)
+        if total != quantity * price:
+            raise ValueError(f"CSV row {number}, total_amount: does not equal quantity times unit_price")
+        dates.append(date)
+        quantities.append(quantity)
+        prices.append(price)
+        totals.append(total)
+    frame["date"] = pd.to_datetime(dates)
+    frame["quantity"] = quantities
+    frame["unit_price_cents"] = pd.Series(prices, dtype=object)
+    frame["total_cents"] = pd.Series(totals, dtype=object)
+    return frame
