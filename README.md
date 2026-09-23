@@ -111,3 +111,70 @@ Open [pre-work-setup.md](pre-work-setup.md) and work through it first, then cont
 ## License
 
 This tutorial is provided for educational purposes.
+
+## Run the sales dashboard locally
+
+Use Python 3.11 or newer. From the project root, create a plain Python virtual
+environment and install the dependencies:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m pip check
+```
+
+On Windows PowerShell, activate with `venv\Scripts\Activate.ps1` instead.
+The `venv/` directory is local and excluded from Git.
+
+Start the dashboard with the environment active:
+
+```bash
+streamlit run app.py
+```
+
+Open the local URL printed in the terminal. **ShopSmart Sales Dashboard** displays
+two KPI cards, a monthly sales trend, and category and region charts for the
+supplied CSV. Press Ctrl+C in the terminal to stop the server.
+
+Run the data and Streamlit integration tests from the project root:
+
+```bash
+python -m pytest -q
+```
+
+See [verification evidence](docs/sales-dashboard-verification.md) for automated
+results and the accepted local browser checks.
+
+## Deploy the sales dashboard after review and merge
+
+Deployment is user-owned. Complete final review, push the feature branch, and
+merge it into the GitHub repository's `main` branch before deploying.
+
+1. In Streamlit Community Cloud, create an app from
+   [nikhilmandyam/ai-dev-workflow-tutorial](https://github.com/nikhilmandyam/ai-dev-workflow-tutorial),
+   selecting branch `main` and entrypoint `app.py`.
+2. In Advanced settings, select Python **3.14**, matching the locally tested
+   **Python 3.14.7** environment. Use the root `requirements.txt` for dependency
+   installation; keep `sales_data.py` and `data/sales-data.csv` in the repository.
+   No secrets are required for this CSV-backed app. If Python 3.14 is unavailable,
+   verify a supported minor version locally with the same dependencies and full
+   test suite, and update this evidence before deploying with that version.
+3. Deploy and make the app publicly accessible. Follow the
+   [official deployment instructions](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy)
+   and [sharing guidance](https://docs.streamlit.io/deploy/streamlit-community-cloud/share-your-app)
+   for the current controls.
+4. Open the deployed URL in a signed-out/private browser window. Verify Total
+   Sales **$116,500**, Total Orders **482**, the January–December 2024 monthly
+   chart, five categories, and four regions. Compare all three charts with the
+   local dashboard: descending bar rankings, readable labels, exact-cent
+   tooltips, and no errors. Exact sales total is **$116,500.21**; each grouped
+   summary must reconcile to it.
+5. Record the actual public URL below and deployed verification results in
+   [the verification document](docs/sales-dashboard-verification.md). Check the
+   remaining TASK-7 criteria in `TASKS.md` only after they pass. Commit with
+   `TASK-7: Record verified public deployment` through the normal review workflow.
+
+**This repository's public deployment URL:** Pending user deployment after merge.
+The finished-example URL earlier in this tutorial is not this deployment.
