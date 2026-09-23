@@ -12,15 +12,6 @@ Before any milestone moves to Done:
 
 ## To Do
 
-### TASK-1: Environment setup and project initialization
-
-Set up the Python environment and a runnable Streamlit project.
-
-- [ ] Python 3.11+ setup instructions and dependencies for Streamlit, Pandas, and Plotly are provided.
-- [ ] A minimal `app.py` launches successfully and displays the dashboard title.
-
-Commit:
-
 ### TASK-2: Data loading and basic structure
 
 Load the sales CSV and establish the dashboard layout and data-processing structure.
@@ -82,5 +73,17 @@ Deploy the completed dashboard for stakeholder review through a public URL.
 Commit:
 
 ## In Progress
+
+### TASK-1: Environment setup and project initialization
+
+Set up the Python environment and a runnable Streamlit project.
+
+- [x] Python 3.11+ setup instructions and dependencies for Streamlit, Pandas, and Plotly are provided.
+- [ ] A minimal `app.py` launches successfully and displays the dashboard title.
+
+Verification: Local server startup and Streamlit AppTest passed on Python 3.14.7.
+The visual browser check is outstanding because no browser was available to the agent.
+
+Commit:
 
 ## Done

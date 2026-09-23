@@ -111,3 +111,37 @@ Open [pre-work-setup.md](pre-work-setup.md) and work through it first, then cont
 ## License
 
 This tutorial is provided for educational purposes.
+
+## Run the sales dashboard locally
+
+Use Python 3.11 or newer. From the project root, create a plain Python virtual
+environment and install the dependencies:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m pip check
+```
+
+On Windows PowerShell, activate with `venv\Scripts\Activate.ps1` instead.
+The `venv/` directory is local and excluded from Git.
+
+Start the dashboard with the environment active:
+
+```bash
+streamlit run app.py
+```
+
+Open the local URL printed in the terminal. The initial page displays
+**ShopSmart Sales Dashboard**; data loading, KPIs, and charts will be added in
+later milestones. Press Ctrl+C in the terminal to stop the server.
+
+Once the data tests are added in TASK-2, run them from the project root:
+
+```bash
+python -m pytest -q
+```
+
+TASK-1 uses a local browser smoke check; there are no automated tests yet.

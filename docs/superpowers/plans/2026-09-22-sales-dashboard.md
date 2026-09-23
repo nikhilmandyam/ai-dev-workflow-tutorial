@@ -65,8 +65,8 @@ Use [Streamlit chart rendering](https://docs.streamlit.io/develop/api-reference/
 
 **Interfaces:** Produces a working Streamlit entrypoint; no data API yet.
 
-- [ ] Confirm `git branch --show-current` is `feature/sales-dashboard`, inspect `git status --short`, and preserve unrelated changes.
-- [ ] Verify `python3 --version` is at least 3.11, then create and activate the environment. If it is older, select an installed Python 3.11+ executable before creating the environment.
+- [x] Confirm `git branch --show-current` is `feature/sales-dashboard`, inspect `git status --short`, and preserve unrelated changes.
+- [x] Verify `python3 --version` is at least 3.11, then create and activate the environment. If it is older, select an installed Python 3.11+ executable before creating the environment.
 
 ```bash
 python3 -m venv venv
@@ -74,7 +74,7 @@ source venv/bin/activate
 python -m pip install --upgrade pip
 ```
 
-- [ ] Create the initial dependency file with these four lines and install it:
+- [x] Create the initial dependency file with these four lines and install it:
 
 ```text
 streamlit
@@ -88,7 +88,7 @@ python -m pip install -r requirements.txt
 python -m pip check
 ```
 
-- [ ] Create the app shell:
+- [x] Create the app shell:
 
 ```python
 import streamlit as st
@@ -98,8 +98,8 @@ st.title("ShopSmart Sales Dashboard")
 ```
 
 - [ ] Launch `streamlit run app.py`, verify the title in a browser, then stop the server. This shell requires a smoke check, not a test mirroring its literal title.
-- [ ] Append the preceding setup commands plus `streamlit run app.py` and `python -m pytest -q` to a dashboard section in `README.md`. Explain that the test command applies once tests exist.
-- [ ] Pin the installed direct dependency versions without dumping unrelated packages into the file:
+- [x] Append the preceding setup commands plus `streamlit run app.py` and `python -m pytest -q` to a dashboard section in `README.md`. Explain that the test command applies once tests exist.
+- [x] Pin the installed direct dependency versions without dumping unrelated packages into the file:
 
 ```bash
 python - <<'PY'
@@ -112,7 +112,7 @@ Path("requirements.txt").write_text(
 PY
 ```
 
-- [ ] Review the diff, update the milestone according to the tracking rules, and commit only relevant files with `TASK-1: Set up the Streamlit dashboard`.
+- [x] Review the diff, update the milestone according to the tracking rules, and commit only relevant files with `TASK-1: Set up the Streamlit dashboard`.
 
 ## Step 2 [TASK-2]: Load structured CSV data
 
