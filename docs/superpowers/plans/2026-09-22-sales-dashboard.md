@@ -489,7 +489,7 @@ for container, data, column, title in [
 
 **Interfaces:** Consumes all four aggregation functions, `load_sales`, and the app entrypoint; produces verification evidence without new production APIs.
 
-- [ ] Add the supplied-data regression test:
+- [x] Add the supplied-data regression test:
 
 ```python
 def test_supplied_csv_totals_and_dimensions():
@@ -506,7 +506,7 @@ def test_supplied_csv_totals_and_dimensions():
         assert sum(summary["total_cents"]) == 11650021
 ```
 
-- [ ] Create focused UI integration tests. These check visible behavior rather than internal chart serialization:
+- [x] Create focused UI integration tests. These check visible behavior rather than internal chart serialization:
 
 ```python
 from pathlib import Path
@@ -542,12 +542,12 @@ def test_data_error_stops_rendering(message):
     assert len(app.get("plotly_chart")) == 0
 ```
 
-- [ ] Run `python -m pytest -q` and `python -m pip check`. New integration tests may pass immediately because they verify already-built behavior. For any failure, isolate it with its test, fix only its cause, and rerun the affected tests followed by the complete suite.
-- [ ] Run `streamlit run app.py`. Check the title, date range, whole-dollar formatting, hover cents, chart ordering, labels, and absence of runtime warnings/errors. Inspect actual tooltips; AppTest does not establish browser rendering quality.
-- [ ] Check Chrome, Firefox, Safari, and Edge. Record browser versions, viewport, result, and any unavailable browser in `docs/sales-dashboard-verification.md`. An unavailable required browser remains an outstanding TASK-6 check.
-- [ ] Measure local navigation-to-dashboard visibility and CSV-load-completion-to-all-charts-visible timing over three reloads with the server already running. Use temporary timing logs at loader completion plus a browser performance recording; remove diagnostic code afterward. Record machine, browser, dataset size, cache conditions, and all measurements. Each measured run must meet the five-second dashboard and two-second chart targets. Do not substitute HTTP response time or AppTest runtime for chart rendering time.
-- [ ] Refine spacing and labeling only where visual inspection identifies a problem. After a code change, rerun relevant tests and the affected visual check; retain two production modules.
-- [ ] Record actual commands, results, timing measurements, and unresolved checks in the verification document. Update TASK-6 only when all criteria pass, and commit `TASK-6: Verify dashboard accuracy and presentation`.
+- [x] Run `python -m pytest -q` and `python -m pip check`. New integration tests may pass immediately because they verify already-built behavior. For any failure, isolate it with its test, fix only its cause, and rerun the affected tests followed by the complete suite.
+- [x] Run `streamlit run app.py`. Check the title, date range, whole-dollar formatting, hover cents, chart ordering, labels, and absence of runtime warnings/errors. Inspect actual tooltips; AppTest does not establish browser rendering quality.
+- [x] Check Chrome, Firefox, Safari, and Edge. Record browser versions, viewport, result, and any unavailable browser in `docs/sales-dashboard-verification.md`. An unavailable required browser remains an outstanding TASK-6 check.
+- [x] Measure local navigation-to-dashboard visibility and CSV-load-completion-to-all-charts-visible timing over three reloads with the server already running. Use temporary timing logs at loader completion plus a browser performance recording; remove diagnostic code afterward. Record machine, browser, dataset size, cache conditions, and all measurements. Each measured run must meet the five-second dashboard and two-second chart targets. Do not substitute HTTP response time or AppTest runtime for chart rendering time.
+- [x] Refine spacing and labeling only where visual inspection identifies a problem. After a code change, rerun relevant tests and the affected visual check; retain two production modules.
+- [x] Record actual commands, results, timing measurements, and unresolved checks in the verification document. Update TASK-6 only when all criteria pass, and commit `TASK-6: Verify dashboard accuracy and presentation`.
 
 ## Step 8 [TASK-7]: Prepare deployment documentation and hand off the branch
 

@@ -122,3 +122,17 @@ def test_breakdowns_sum_sort_and_include_new_labels(tmp_path, function, column):
     result = function(frame)
     assert result[column].tolist() == ["New label", "Alpha", "Zeta"]
     assert result["total_cents"].tolist() == [40, 20, 20]
+
+
+def test_supplied_csv_totals_and_dimensions():
+    path = Path(__file__).resolve().parents[1] / "data" / "sales-data.csv"
+    frame = load_sales(path)
+    assert calculate_kpis(frame) == (11650021, 482)
+    assert set(category_sales(frame)["category"]) == {
+        "Electronics", "Accessories", "Audio", "Wearables", "Smart Home"
+    }
+    assert set(region_sales(frame)["region"]) == {"North", "South", "East", "West"}
+    assert category_sales(frame).iloc[0]["category"] == "Electronics"
+    assert len(monthly_sales(frame)) == 12
+    for summary in (monthly_sales(frame), category_sales(frame), region_sales(frame)):
+        assert sum(summary["total_cents"]) == 11650021

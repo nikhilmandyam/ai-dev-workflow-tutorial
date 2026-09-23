@@ -12,16 +12,6 @@ Before any milestone moves to Done:
 
 ## To Do
 
-### TASK-6: Testing and refinement
-
-Verify dashboard accuracy, performance, browser compatibility, and presentation quality.
-
-- [ ] All KPI and chart calculations are verified against the CSV, and the dashboard runs without errors or warnings.
-- [ ] The dashboard loads within 5 seconds and charts render within 2 seconds of data loading.
-- [ ] The dashboard works in Chrome, Firefox, Safari, and Edge, with clear labels and a professional appearance suitable for executive presentations.
-
-Commit:
-
 ### TASK-7: Streamlit Community Cloud deployment
 
 Deploy the completed dashboard for stakeholder review through a public URL.
@@ -35,6 +25,24 @@ Commit:
 ## In Progress
 
 ## Done
+
+### TASK-6: Testing and refinement
+
+Verify dashboard accuracy, performance, browser compatibility, and presentation quality.
+
+Automated verification: 39 tests pass; dependency check passes; independent CSV
+calculations match all KPI and grouped totals. Local app runs at
+http://127.0.0.1:8506. The user confirmed correct KPIs and charts, readable
+layout, no visible errors, and passing required browser and reload checks.
+Evidence and manual checklist: [verification document](docs/sales-dashboard-verification.md).
+
+- [x] All KPI and chart calculations are verified against the CSV, and the dashboard runs without errors or warnings.
+- [x] The dashboard loads within 5 seconds and charts render within 2 seconds of data loading.
+- [x] The dashboard works in Chrome, Firefox, Safari, and Edge, with clear labels and a professional appearance suitable for executive presentations.
+
+Commit:
+
+Notes: clean
 
 ### TASK-5: Category and region breakdowns
 
