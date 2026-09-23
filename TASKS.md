@@ -74,16 +74,18 @@ Commit:
 
 ## In Progress
 
+## Done
+
 ### TASK-1: Environment setup and project initialization
 
 Set up the Python environment and a runnable Streamlit project.
 
 - [x] Python 3.11+ setup instructions and dependencies for Streamlit, Pandas, and Plotly are provided.
-- [ ] A minimal `app.py` launches successfully and displays the dashboard title.
+- [x] A minimal `app.py` launches successfully and displays the dashboard title.
 
 Verification: Local server startup and Streamlit AppTest passed on Python 3.14.7.
-The visual browser check is outstanding because no browser was available to the agent.
+The user confirmed the dashboard title rendered at the local Streamlit URL with no visible errors.
 
-Commit:
+Commit: c9a1348
 
-## Done
+Notes: clean
