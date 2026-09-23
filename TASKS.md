@@ -12,16 +12,6 @@ Before any milestone moves to Done:
 
 ## To Do
 
-### TASK-4: Sales trend chart
-
-Show sales over time in an interactive line chart.
-
-- [ ] Sales are aggregated by day or month and plotted in chronological order across the dataset's date range.
-- [ ] The chart has clear time and sales axis labels and tooltips showing exact values.
-- [ ] Chart totals match the corresponding CSV aggregations.
-
-Commit:
-
 ### TASK-5: Category and region breakdowns
 
 Show interactive bar charts comparing sales by product category and geographic region.
@@ -53,6 +43,23 @@ Deploy the completed dashboard for stakeholder review through a public URL.
 Commit:
 
 ## In Progress
+
+### TASK-4: Sales trend chart
+
+Show sales over time in an interactive line chart.
+
+- [ ] Sales are aggregated by day or month and plotted in chronological order across the dataset's date range.
+- [ ] The chart has clear time and sales axis labels and tooltips showing exact values.
+- [x] Chart totals match the corresponding CSV aggregations.
+
+Verification: 33 pytest tests pass, including chronological grouping across a
+missing month and year boundary. All 12 monthly totals match independent CSV
+calculations and reconcile to 11,650,021 cents ($116,500.21). AppTest confirms
+one chart with labeled axes and a cent-precision hover template, with no app
+exceptions, errors, or warnings. Visual browser verification remains pending
+at http://127.0.0.1:8504; TASK-4 remains In Progress.
+
+Commit:
 
 ## Done
 

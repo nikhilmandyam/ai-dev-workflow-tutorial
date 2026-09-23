@@ -374,7 +374,7 @@ kpi_columns[1].metric("Total Orders", f"{order_count:,}")
 
 **Interfaces:** `monthly_sales(sales: pd.DataFrame) -> pd.DataFrame` returns `month` (month-start timestamp) and `total_cents` (integer), including zero-sales gaps.
 
-- [ ] Add the failing test and run `python -m pytest tests/test_sales_data.py -k monthly -q`:
+- [x] Add the failing test and run `python -m pytest tests/test_sales_data.py -k monthly -q`:
 
 ```python
 from sales_data import monthly_sales
@@ -390,7 +390,7 @@ def test_monthly_sales_cross_year_gap_and_order(tmp_path):
     assert result["total_cents"].tolist() == [40, 0, 20]
 ```
 
-- [ ] Implement:
+- [x] Implement:
 
 ```python
 def monthly_sales(sales: pd.DataFrame) -> pd.DataFrame:
@@ -402,7 +402,7 @@ def monthly_sales(sales: pd.DataFrame) -> pd.DataFrame:
                          "total_cents": totals.tolist()})
 ```
 
-- [ ] Import `plotly.express as px` and `monthly_sales` in `app.py`. Insert the chart immediately after the Monthly Sales subheading, before creating breakdown columns:
+- [x] Import `plotly.express as px` and `monthly_sales` in `app.py`. Insert the chart immediately after the Monthly Sales subheading, before creating breakdown columns:
 
 ```python
 trend = monthly_sales(sales)

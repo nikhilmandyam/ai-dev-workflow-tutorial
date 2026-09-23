@@ -79,3 +79,13 @@ def validate_sales(frame: pd.DataFrame) -> pd.DataFrame:
 
 def calculate_kpis(sales: pd.DataFrame) -> tuple[int, int]:
     return sum(sales["total_cents"]), len(sales)
+
+
+def monthly_sales(sales: pd.DataFrame) -> pd.DataFrame:
+    """Sum exact cents by month, including zero-sales gaps."""
+    months = sales["date"].dt.to_period("M")
+    totals = sales.groupby(months)["total_cents"].sum()
+    complete_range = pd.period_range(months.min(), months.max(), freq="M")
+    totals = totals.reindex(complete_range, fill_value=0)
+    return pd.DataFrame({"month": complete_range.to_timestamp(),
+                         "total_cents": totals.tolist()})

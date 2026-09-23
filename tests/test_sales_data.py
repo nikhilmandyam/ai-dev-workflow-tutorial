@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from sales_data import calculate_kpis, load_sales
+from sales_data import monthly_sales, calculate_kpis, load_sales
 
 FIELDS = ["date", "order_id", "product", "category", "region",
           "quantity", "unit_price", "total_amount"]
@@ -96,3 +96,14 @@ def test_kpis_preserve_cents(tmp_path):
         row(), row(order_id="B", quantity="1", unit_price="0.10", total_amount="0.10")
     ]))
     assert calculate_kpis(frame) == (30, 2)
+
+
+def test_monthly_sales_cross_year_gap_and_order(tmp_path):
+    frame = load_sales(write_csv(tmp_path, [
+        row(date="2025-02-03"),
+        row(order_id="B", date="2024-12-12"),
+        row(order_id="C", date="2024-12-01"),
+    ]))
+    result = monthly_sales(frame)
+    assert result["month"].dt.strftime("%Y-%m").tolist() == ["2024-12", "2025-01", "2025-02"]
+    assert result["total_cents"].tolist() == [40, 0, 20]
