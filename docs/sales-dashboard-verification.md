@@ -157,3 +157,55 @@ The user accepted TASK-6 and explicitly requested all acceptance criteria checke
 `feature/sales-dashboard`. The commit message is
 `TASK-6: Verify dashboard accuracy and presentation`. Its `Commit:` board field
 remains reserved for the user. TASK-7 deployment is outside this work's scope.
+
+## TASK-7 deployment readiness — plan Step 8
+
+Recorded September 23, 2026 on `feature/sales-dashboard`, starting at `f85700a`.
+Native execution in this session; no subagents. Readiness changes are limited to
+`README.md`, `TASKS.md`, and this document. Application code, dependencies, tests,
+and the supplied CSV are unchanged.
+
+| Command / check | Actual result |
+| --- | --- |
+| `venv/bin/python --version` | Python 3.14.7; deployment minor version: 3.14 |
+| `git ls-files app.py sales_data.py requirements.txt data/sales-data.csv` | All four files tracked |
+| `venv/bin/python -m pip install -r requirements.txt` | Exit 0; all pinned requirements already satisfied in the existing environment |
+| `venv/bin/python -m pip --no-cache-dir check` | No broken requirements found |
+| `venv/bin/python -m pytest -q` | 39 passed in 1.27s |
+| `git diff --check` | Passed; no whitespace errors |
+
+The install emitted only a pip cache-directory permissions warning; pip disabled
+its cache and completed successfully. This verifies the existing macOS arm64
+environment, not a fresh Linux cloud build. No dependency changes were needed.
+
+The README specifies the GitHub repository, `main`, `app.py`, root
+`requirements.txt`, Python 3.14, public access, and the post-deployment checks.
+No secrets or additional services are required by the application. The
+[official Streamlit deployment documentation](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy)
+was checked for repository/branch/entrypoint selection and Python selection in
+Advanced settings. It states that released Python versions receiving security
+updates are supported. Actual cloud build and runtime verification remain pending.
+
+Step 7's accepted local browser, tooltip, and performance evidence is reused
+because no application or dependency changes justify repeating those checks.
+Its user-reported provenance and missing browser versions, viewport details,
+and exact timing measurements remain as documented above.
+
+Review status: readiness documentation self-reviewed against Step 8 and the
+tracked application inputs. Final independent branch review and merge are still
+pending; this author self-review does not substitute for that review. No merge,
+push, or deployment was performed for Step 8.
+
+Remaining user actions:
+
+1. Push the feature branch, complete final review, and merge into remote `main`.
+2. Deploy `main` with the documented configuration, verifying the cloud build.
+3. Verify signed-out public access, both KPIs, all three charts, rankings, and
+   exact-cent tooltips against the local dashboard and totals above.
+4. Record the actual public URL and deployed parity evidence; commit with
+   `TASK-7: Record verified public deployment` through the normal review workflow.
+   Move TASK-7 to Done only when its remaining criteria and Definition of Done pass.
+
+Only TASK-7's deployment-configuration criterion is checked. Public URL and
+deployed-parity criteria remain unchecked, and its `Commit:` field remains
+reserved for the user. Readiness commit message: `TASK-7: Prepare deployment handoff`.

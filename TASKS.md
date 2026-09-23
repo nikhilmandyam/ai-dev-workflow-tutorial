@@ -12,17 +12,24 @@ Before any milestone moves to Done:
 
 ## To Do
 
+## In Progress
+
 ### TASK-7: Streamlit Community Cloud deployment
 
 Deploy the completed dashboard for stakeholder review through a public URL.
 
-- [ ] The app, dependencies, and CSV are configured for successful deployment to Streamlit Community Cloud.
+- [x] The app, dependencies, and CSV are configured for successful deployment to Streamlit Community Cloud.
 - [ ] A public, shareable URL is documented and opens the working dashboard without errors.
 - [ ] Deployed KPIs and all three charts match the locally verified dashboard.
 
-Commit:
+Readiness: Step 8 prepared on Python 3.14.7; all four deployment inputs are
+tracked, dependency installation/check passes, and 39 tests pass. Deployment
+instructions are in `README.md`; evidence and review status are in
+[the verification document](docs/sales-dashboard-verification.md#task-7-deployment-readiness--plan-step-8).
+Final review and merge remain user-owned, followed by deployment from `main`.
+No public URL or deployed parity is claimed. TASK-7 remains In Progress.
 
-## In Progress
+Commit:
 
 ## Done
 
