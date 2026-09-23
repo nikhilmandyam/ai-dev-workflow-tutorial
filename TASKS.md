@@ -54,6 +54,8 @@ Commit:
 
 ## In Progress
 
+## Done
+
 ### TASK-3: KPI cards
 
 Display Total Sales and Total Orders prominently using the CSV data.
@@ -65,12 +67,12 @@ Display Total Sales and Total Orders prominently using the CSV data.
 Verification: 32 pytest tests pass. Independent CSV verification totals
 $116,500.21 across 482 transactions; AppTest confirms Total Sales `$116,500`
 and Total Orders `482`, with no app exceptions, errors, or warnings.
-Streamlit starts locally at http://127.0.0.1:8503. Browser inspection is
-unavailable in this session; visual confirmation remains outstanding.
+Streamlit starts locally at http://127.0.0.1:8503. The user confirmed
+Total Sales `$116,500` and Total Orders `482` with no visible errors.
 
-Commit:
+Commit: db7341b
 
-## Done
+Notes: clean
 
 ### TASK-2: Data loading and basic structure
 
